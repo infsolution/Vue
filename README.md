@@ -1,2 +1,2 @@
 # Vue
-Curos de verão
+Curso de verão
