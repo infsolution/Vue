@@ -1,4 +1,3 @@
-export default {
-	tarefas:[],
-	nome: 'Cícero Leonardo'
+export default{
+	nome: 'Cícero leonardo'
 }

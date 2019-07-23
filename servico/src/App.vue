@@ -1,35 +1,30 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1>{{ $store.state.nome }}</h1>
-    <AddTarefa></AddTarefa>
-    <Tarefas></Tarefas>
-    <Busca></Busca>
+    <h1>Nossas Listas</h1>
+    <Lista titulo="Carros" :lista="carros"></Lista>
+    <Lista titulo="Aviões" :lista="avioes"></Lista>
+
   </div>
 </template>
 
 <script>
-import AddTarefa from './AddTarefa.vue'
-import Tarefas from './Tarefas.vue'
-import Busca from './Busca.vue'
-import {mapState} from 'vuex'
-
+import Carro from './servicos/carros'
+import Aviao from './servicos/avioes'
+import Lista from './Lista.vue'
 export default {
   name: 'app',
-  components:{AddTarefa, Tarefas, Busca},
+  components: {Lista},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      carros:{},
+      avioes: {}
     }
   },
-  computed: {
-    ...mapState(['nome'])
-  },
-  // mounted(){
-  //   setTimeout(()=>{
-  //     this.$store.state.nome = 'Marcelia'
-  //   }, 3000)
-  // },
+  mounted(){
+    Carro.lista().then(dado => this.carros = dado.data)
+    Aviao.lista().then(dado => this.avioes = dado.data)
+  }
 }
 </script>
 
@@ -54,7 +49,7 @@ h1, h2 {
 
 li {
   display: inline-block;
-  margin: 10 10px;
+  margin: 0 10px;
 }*/
 
 a {

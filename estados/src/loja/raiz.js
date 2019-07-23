@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import estado from './estado'
-import mutacoes from './mutacoes'
-import getters from './getters'
-import acoes from './acoes'
+
 
 Vue.use(Vuex)
 
+import estado from './estado'
+import Tarefas from './modulos/tarefas/raiz'
+
 export default new Vuex.Store({
 	state: estado,
-	mutations: mutacoes,
-	getters: getters,
-	actions: acoes
+	modules:{
+		Tarefas
+	}
 })
